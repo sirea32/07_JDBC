@@ -102,6 +102,38 @@ public class JDBCTemplate {
 	
 	/* 트랜잭션 제어 처리 메서드 (commit, rollback) */
 	
+	
+	/**
+	 * 전달 받은 커넥션에서 수행한 SQL을 COMMIT하는 메서드
+	 * @param conn
+	 */
+	public static void commit(Connection conn) {
+		try {
+			if(conn != null && !conn.isClosed()) conn.commit();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	/**
+	 * 전달 받은 커넥션에서 수행한 SQL을 Rollback하는 메서드
+	 * @param conn
+	 */
+	public static void rollback(Connection conn) {
+		try {
+			if(conn != null && !conn.isClosed()) conn.rollback();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	
+	
+	
 	/**
 	 * 전달받은 커넥션을 close(자원 반환)하는 메서드
 	 * @param conn
